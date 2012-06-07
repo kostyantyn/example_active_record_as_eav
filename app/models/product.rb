@@ -10,12 +10,41 @@ class Product < ActiveRecord::Base
 
   class << self
     def eav(name, type)
-      class_eval <<-EOS, __FILE__, __LINE__ + 1
-        attr_accessible :#{name}
-        def #{name};        eav_attr_model('#{name}', '#{type}').value         end
-        def #{name}=(value) eav_attr_model('#{name}', '#{type}').value = value end
-        def #{name}?;       eav_attr_model('#{name}', '#{type}').value?        end
-      EOS
+      attr_accessor name
+
+      attribute_method_matchers.each do |matcher|
+        class_eval <<-EOS, __FILE__, __LINE__ + 1
+          def #{matcher.method_name(name)}(*args)
+            eav_attr_model('#{name}', '#{type}').send :#{matcher.method_name('value')}, *args
+          end
+        EOS
+      end
+    end
+
+    def scoped(options = nil)
+      super(options).extend(QueryMethods)
+    end
+  end
+
+  module QueryMethods
+    def select(*args, &block)
+      super(*args, &block)
+    end
+
+    def group(*args)
+      super(*args)
+    end
+
+    def order(*args)
+      super(*args)
+    end
+
+    def reorder(*args)
+      super(*args)
+    end
+
+    def where(*args)
+      super(*args)
     end
   end
 end

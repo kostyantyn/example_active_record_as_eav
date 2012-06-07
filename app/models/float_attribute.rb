@@ -1,0 +1,2 @@
+class FloatAttribute < Attribute
+end

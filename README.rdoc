@@ -1,3 +1,5 @@
 == ActiveRecord as EAV
 
 Simple example how to implement EAV pattern for ActiveRecord models without any gems
+
+Presentation[http://www.slideshare.net/stepanyuk/implementation-of-eav-pattern-for-activerecord-models-13263311]

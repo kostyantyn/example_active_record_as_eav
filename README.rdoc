@@ -1,7 +1,5 @@
 == ActiveRecord as EAV
 
-Simple example how to implement EAV pattern for ActiveRecord models without any gems
-
-Presentation[http://www.slideshare.net/stepanyuk/implementation-of-eav-pattern-for-activerecord-models-13263311]
+Simple example how to implement EAV pattern for ActiveRecord models without any gems. Presentation[http://www.slideshare.net/stepanyuk/implementation-of-eav-pattern-for-activerecord-models-13263311]
 
 If you need a full implementation of EAV pattern, please look at hydra_attribute[https://github.com/kostyantyn/hydra_attribute]
